@@ -1,0 +1,49 @@
+body{
+    background-color: rgb(255, 230, 0);
+    color: rgb(255, 255, 255);
+}
+.App{
+    height: 100%;
+    width: 100%;
+}
+
+.text-container{
+    height: 10%;
+    width: 100%;
+
+    text-align: center;
+    font-size: 30px;
+}
+
+.text-container h1{
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.text-container p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+}
+
+.image-container{
+    height: 90%;
+    width: 100%;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img{
+    height: 70%;
+
+    position: absolute;
+    bottom: 0; 
+}
+
+@media screen and (min-width:1300px) {
+    .image-container img{
+        height: 90%;
+    }   
+}
+
