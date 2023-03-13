@@ -8,7 +8,7 @@ body{
 }
 
 .text-container{
-    height: 10%;
+    height: 5%;
     width: 100%;
 
     text-align: center;
@@ -35,15 +35,35 @@ body{
 }
 
 .image-container img{
-    height: 70%;
-
+    height:50%;
+    width: 350px;
     position: absolute;
     bottom: 0; 
 }
 
-@media screen and (min-width:1300px) {
+@media screen and (min-width:500px) {
     .image-container img{
-        height: 90%;
+        width: 450px;
     }   
 }
 
+
+@media screen and (min-width:800px) {
+    .image-container img{
+        height: 90%;
+        width: 750px;
+    }   
+
+    .text-container p{
+        display: none;
+    }
+}
+
+
+@media screen and (min-width:1300px) {
+    .image-container img{
+        height: 100%;
+        width: 650px;
+
+    }   
+}
