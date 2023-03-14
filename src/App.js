@@ -1,18 +1,24 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import './App.css';
-import Navbar from './components/Navbar'
-import headingImage from './img/—Pngtree—hand drawn girl reading book_4050570.png'
+import Home from './pages/Home'
+import AddBook from './pages/AddBook'
+import Libary from './pages/Library'
+import About from './pages/About'
+import Attributions from './pages/Attributions'
+
 function App() {
   return (
-    <div className="App">
-      <Navbar/>
-      <div className='text-container'>
-        <h1>Book Track</h1>
-        <p>Lorem ipsum dolor sit amet</p>
-      </div>
-      <div className='image-container'> 
-        <img src={headingImage} alt='Homepage image.'   className='headingImage'></img>
-      </div>      
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home/>}></Route>
+          <Route path='/addBook' element={<AddBook/>}></Route>
+          <Route path='/library' element={<Libary/>}></Route>
+          <Route path='/aboutMe' element={<About/>}></Route>
+          <Route path='/attributions' element={<Attributions/>}></Route>
+        </Routes>
+    </BrowserRouter>
 
   );
 }
