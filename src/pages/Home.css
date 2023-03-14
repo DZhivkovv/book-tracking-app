@@ -1,0 +1,69 @@
+body{
+    background-color: rgb(255, 230, 0);
+    color: rgb(255, 255, 255);
+}
+.home--container{
+    height: 100%;
+    width: 100%;
+}
+
+.home--text-container{
+    height: 5%;
+    width: 100%;
+
+    text-align: center;
+    font-size: 30px;
+}
+
+.home--text-container h1{
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.home--text-container p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+}
+
+.home--image-container{
+    height: 90%;
+    width: 100%;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+}
+
+.home--image-container img{
+    height:50%;
+    width: 350px;
+    position: absolute;
+    bottom: 0; 
+}
+
+@media screen and (min-width:500px) {
+    .home--image-container img{
+        width: 450px;
+    }   
+}
+
+
+@media screen and (min-width:800px) {
+    .home--image-container img{
+        height: 90%;
+        width: 750px;
+    }   
+
+    .home--text-container p{
+        display: none;
+    }
+}
+
+
+@media screen and (min-width:1300px) {
+    .home--image-container img{
+        height: 100%;
+        width: 650px;
+
+    }   
+}
