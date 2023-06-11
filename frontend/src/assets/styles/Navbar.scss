@@ -1,0 +1,171 @@
+@import 'variables';
+
+.navbar--container{
+    height: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 0 25px;
+    transition: 0.3s;
+    background-color: $wood-brown;
+    -webkit-box-shadow: 0px 3px 5px 0px $semi-transparent-black;
+    -moz-box-shadow: 0px 3px 5px 0px $semi-transparent-black;
+    box-shadow: 0px 3px 5px 0px $semi-transparent-black;
+
+    // Button for showing and hiding the navigation menu for smaller devices
+    .toggle-menu{
+        width: 30px;
+        height: 100%;
+        position: absolute;
+        z-index: 3;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    // Hamburger icon
+    .hamburger{
+        width: 20px;
+        height: 4px;
+        display: none;
+        position: absolute;
+        left: 20px !important;
+        bottom: 30px;
+        background: white;
+        cursor: pointer;
+        border-radius: 10px;
+        z-index: 2;
+        transition: 0.3s;
+
+        &::before, &::after{
+            width: 20px !important;
+            height: 4px;
+            position: absolute;
+            right: 0px;
+            background: white;
+            border-radius: 10px;
+            transition: 0.3s;
+            content: "";
+            width: 20px;
+        }
+    
+        &::before{
+            top: 10px;
+        }
+    
+        &::after{
+            top: 20px;    
+        }
+    }
+
+    // Navigation bar
+    .menu{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: .3s;
+        list-style: none;
+
+        .navbar-section{
+            // Common styles for left and right section of the navbar
+            display: flex;
+
+            li{
+                margin: 0 10px;
+                padding: 10px;
+                font-size: 20px;
+
+                a{
+                    color: white;
+                    text-decoration: none;        
+                }
+            }
+        }
+        // Styles for right positioned links in the navbar 
+        .navbar-right{
+            .signup-link-container{
+                padding: 10px;
+                border-radius: 5px;
+                background-color: $candy-pink;
+            
+                &:hover{
+                    background-color: $candy-purple;
+                }
+            }
+        }
+    }    
+
+    // Styles applied to the hamburger icon and the menu when the associated checkbox is checked.
+    input:checked ~ .hamburger{
+        background: transparent;
+
+        &::before{
+            width: 30px !important;
+            top: 10px;
+            transform: rotate(-45deg);
+        }
+
+        &::after{
+            width: 30px !important;
+            top: 10px;
+            transform: rotate(45deg);
+        }        
+    }
+
+    input:checked ~ .menu{
+        right: 0;
+        box-shadow: -20px 0 40px rgba(0,0,0,0.3);
+    }    
+}
+
+
+// Style for mobile navigation
+@media screen and (max-width: 800px) {
+    .navbar--container{
+        position: absolute;
+
+        .hamburger, .toggle-menu{
+            display: block;
+        }
+            
+        .menu{
+            width: 300px !important;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            position: fixed;
+            top: 0;
+            right: -300px;
+            background: $wood-dark-brown;
+        
+            /*Common styles for the left positioned links and the right positioned links in the navbar*/
+            .navbar-section{
+                flex-flow: column;
+                height: 50%;
+                justify-content: space-around;
+
+                li{
+                    width: 100%;
+    
+                    a, a:hover{
+                        padding: 30px;
+                        font-size: 24px;
+                        box-shadow: 0 1px 0 $faint-white inset;
+                            
+                    }
+                }    
+            }
+
+            .navbar-right{
+                .signup-link-container{
+                    padding: 0;
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}
