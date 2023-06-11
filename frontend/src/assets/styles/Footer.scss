@@ -1,0 +1,36 @@
+footer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+
+    img{
+        width: 30px;
+        height: 30px;
+        margin: 0 10px;
+        cursor: pointer;
+    }    
+}
+
+
+
+@media only screen and (max-width:500px) {
+    footer{
+        display: none;
+    }
+}
+
+@media only screen and (max-width:800px) {
+    footer{
+        flex-flow: column;
+        align-items: flex-end;
+        bottom: 0;
+        
+        img{
+            margin: 20px 0;
+            transform: scale(1.5);
+        }
+    }
+}
