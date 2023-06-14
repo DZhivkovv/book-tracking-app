@@ -28,7 +28,7 @@ export const signup = async (request, response) => {
             const user = new User({
                 email,
                 username,
-                password: cryptedPassword
+                password: encryptedPassword
             });
 
             // Save the user to the database
@@ -47,6 +47,7 @@ export const signup = async (request, response) => {
             } else {
                 // For any other errors, send a 500 (Internal Server Error) response
                 response.status(500).json({ error: "Internal server error" });
+                console.error(error)
             }
         }
     }
