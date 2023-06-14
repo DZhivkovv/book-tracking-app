@@ -29,7 +29,7 @@ export default function Signup() {
         error: null
       }));
 
-      await fetch('http://localhost:4000/signup',{
+      await fetch('http://localhost:4000/auth/signup',{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -37,7 +37,19 @@ export default function Signup() {
           username,
           password
         })    
-      })  
+      })
+      .then(response => response.json())
+      .then(data =>       {
+        // Check if the response status is 409 (Conflict)
+        if (data.status === 409) {
+          // If there is an error, set the error message in the userCredentials state
+          setUserCredentials((prevUserCredentials) => ({
+            ...prevUserCredentials,
+            error: data.message
+          }));
+        }
+      });
+
     } else {
       // If the passwords do not match, displays an error message to the user
       setUserCredentials((prevUserCredentials) => ({
