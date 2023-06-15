@@ -40,7 +40,8 @@ export default function AddBook() {
         title,
         author,
         pages,
-        status
+        status,
+        userData,
       })
     })
       .then(response => response.json())

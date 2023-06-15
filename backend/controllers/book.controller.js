@@ -3,7 +3,8 @@ import Book from '../models/book.model.js';
 // Adds a book to the database
 export const addBook = async (request, response) => {
   // Extracts the necessary fields from the request body
-  const { title, author, pages, status } = request.body;
+  const { title, author, pages, status,userData } = request.body;
+  const{userID, username} = userData;
 
   try {
     // Checks if any field from the request is missing
@@ -16,6 +17,8 @@ export const addBook = async (request, response) => {
       author,
       pages,
       status,
+      postedBy: userID,
+      username
     });
 
     // Saves the book to the database
