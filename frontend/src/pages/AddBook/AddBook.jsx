@@ -7,7 +7,14 @@ import { useAuthentication } from '../../hooks/useAuthentication.js';
 
 export default function AddBook() {
   const navigate = useNavigate();
-  const { userData, isLoggedIn } = useAuthentication();
+  const { userData, isLoggedIn, isLoading } = useAuthentication();
+  
+  // Redirects the user to the login page if he is not logged in  
+  useEffect(()=>{ 
+    if(isLoading === false && isLoggedIn === false){
+      navigate('/login');
+    }
+  },[userData,isLoggedIn,isLoading,])
 
   const [errorMessage, setErrorMessage] = useState(null);
   // Stores information about the book

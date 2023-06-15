@@ -4,6 +4,7 @@ export function useAuthentication() {
   // State variables to store user data and authentication status
   const [userData, setUserData] = useState(undefined);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Makes a request to the server to check if the user is logged in
@@ -16,12 +17,17 @@ export function useAuthentication() {
       .then((data) => {
         if (data.status === 200) {
           // If the response status is 200, the user is logged in
+          setIsLoading(false);
           setIsLoggedIn(data.isLoggedIn);
-          setUserData(data.username); // Update user data with received username
-        }
-      });
+          setUserData({
+            "userID":data.userID,
+            "username":data.username
+          }); // Update user data variable with received userID and username
+        }      
+        setIsLoading(false);
+      })
   }, []);
 
   // Returns user data and authentication status
-  return { userData, isLoggedIn };
+  return { userData, isLoggedIn, isLoading };
 }
