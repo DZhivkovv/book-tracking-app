@@ -12,7 +12,7 @@ export default function Home(){
         <div className='homepage-container'>
             {/* Renders the Navbar component based on the user's authentication status */}
            {isLoggedIn ? 
-            <Navbar  paths={['Library','Attributions',`Welcome, ${userData}`,'Logout']}/> 
+            <Navbar  paths={['Library','Attributions',`Welcome, ${userData.username}`,'Logout']}/> 
             : 
             <Navbar  paths={['Library','Attributions', 'Log in', 'Sign Up']}/>
            }

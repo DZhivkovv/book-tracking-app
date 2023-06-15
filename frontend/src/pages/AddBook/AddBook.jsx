@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Form from "../../components/Form/Form";
@@ -126,7 +126,7 @@ export default function AddBook() {
     <div className="add-book-container">
       {/* Render the appropriate navigation based on the user's authentication status */}
       {isLoggedIn ?
-        <Navbar paths={['Library', 'Attributions', `Welcome, ${userData}`, 'Logout']} />
+        <Navbar paths={['Library', 'Attributions', `Welcome, ${userData.username}`, 'Logout']} />
         :
         <Navbar paths={['Library', 'Attributions', 'Log in', 'Sign Up']} />
       }
