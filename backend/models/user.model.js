@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import validator from "validator";
 
-const UserSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: [true, "Email is a required field"],
@@ -35,4 +35,4 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
-export default mongoose.model('User', UserSchema);
+export default mongoose.model('User', userSchema);
