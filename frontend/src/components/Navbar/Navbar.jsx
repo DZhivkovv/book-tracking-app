@@ -1,6 +1,6 @@
 import React from 'react';
 import NavLinks from '../NavLinks/NavLinks';
-
+import { handleLogout } from '../../utils/handleLogout.js'
 import '../../assets/styles/Navbar.scss';
 
 export default function Navbar(props) {
@@ -15,7 +15,7 @@ export default function Navbar(props) {
       {/*Navigation menu */}
       <ul className="menu">    
           {/* Generates navigation links using the props passed to Navbar component. */}
-          <NavLinks paths={props.paths} handleLogout = {props.handleLogout}/>
+          <NavLinks paths={props.paths} handleLogout = {handleLogout}/>
       </ul>
     </div>
   );
