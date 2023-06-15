@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAuthentication } from '../../hooks/useAuthentication.js'
+import { handleLogout } from '../../utils/handleLogout.js'
 import Navbar from '../../components/Navbar/Navbar.jsx'
 import Footer from '../../components/Footer/Footer.jsx'
 import homepageImage from '../../assets/images/homepage-image.png'
@@ -12,7 +13,7 @@ export default function Home(){
         <div className='homepage-container'>
             {/* Renders the Navbar component based on the user's authentication status */}
            {isLoggedIn ? 
-            <Navbar  paths={['Library','Attributions',`Welcome, ${userData}`,'Logout']}/> 
+            <Navbar  paths={['Library','Attributions',`Welcome, ${userData}`,'Logout']} handleLogout={handleLogout}/> 
             : 
             <Navbar  paths={['Library','Attributions', 'Log in', 'Sign Up']}/>
            }
