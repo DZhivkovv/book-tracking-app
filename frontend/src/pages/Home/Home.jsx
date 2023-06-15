@@ -1,27 +1,12 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
+import { useAuthentication } from '../../hooks/useAuthentication.js'
 import Navbar from '../../components/Navbar/Navbar.jsx'
 import Footer from '../../components/Footer/Footer.jsx'
 import homepageImage from '../../assets/images/homepage-image.png'
 import '../../assets/styles/Home.scss'
 
 export default function Home(){
-    const[userData, setUserData] = useState(undefined);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    useEffect(() => {
-        fetch('http://localhost:4000/auth/isUserLoggedIn',{
-            headers: {
-                'x-access-token':localStorage.getItem('token')
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.status === 200){
-                setIsLoggedIn(data.isLoggedIn);
-                setUserData(data.username);
-            }
-        })
-    },[])      
+    const {userData, isLoggedIn} = useAuthentication();
 
     return(
         <div className='homepage-container'>
