@@ -111,9 +111,9 @@ export default function Signup() {
       <div className="form-container">
       {/*Signup form*/}
         <Form 
-          template={formTemplate} formButtonLabel='Sign up'
+          template={formTemplate}
           onSubmit = {handleSubmit}                
-        />
+        >Sign up</Form>
       </div>
       <Footer/>
     </div>

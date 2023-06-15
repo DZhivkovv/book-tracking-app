@@ -1,7 +1,7 @@
 import React from "react";
 import InputField from "./InputField";
 
-export default function Form({ template, formButtonLabel, onSubmit }) {
+export default function Form({ template, onSubmit, children }) {
   //Generates input fields based on the template defined in the parent component
   const inputFields = template.map(({ label, type, placeholder, name, value, onChange, minLength }) => (    
     <InputField
@@ -21,7 +21,7 @@ export default function Form({ template, formButtonLabel, onSubmit }) {
       <form onSubmit={onSubmit}>
         {inputFields}
         <button>
-        {formButtonLabel}
+        {children}
         </button>
       </form>
     </div>
