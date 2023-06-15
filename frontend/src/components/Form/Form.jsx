@@ -3,7 +3,7 @@ import InputField from "./InputField";
 
 export default function Form({ template, onSubmit, children }) {
   //Generates input fields based on the template defined in the parent component
-  const inputFields = template.map(({ label, type, placeholder, name, value, onChange, minLength }) => (    
+  const inputFields = template.map(({ label, type, placeholder, name, value, onChange, minLength, required }) => (    
     <InputField
       key={name}
       label={label}
@@ -13,6 +13,7 @@ export default function Form({ template, onSubmit, children }) {
       value={value}
       onChange={onChange}
       minLength = {minLength}
+      required={required}
     />
   ));
 
