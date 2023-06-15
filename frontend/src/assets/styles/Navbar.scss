@@ -4,8 +4,6 @@
     height: 5%;
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: relative;
     padding: 0 25px;
     transition: 0.3s;
@@ -64,38 +62,35 @@
         height: 100%;
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
         transition: .3s;
         list-style: none;
 
-        .navbar-section{
-            // Common styles for left and right section of the navbar
-            display: flex;
+        .nav-element{
+            margin: 0 10px;
+            padding: 10px;
+            font-size: 15px;
 
-            li{
-                margin: 0 10px;
-                padding: 10px;
-                font-size: 15px;
-
-                a{
-                    color: white;
-                    text-decoration: none;        
-                }
+            a{
+                color: white;
+                text-decoration: none;        
             }
         }
-        // Styles for right positioned links in the navbar 
-        .navbar-right{
-            .signup-link-container{
-                padding: 10px;
-                border-radius: 5px;
-                background-color: $candy-pink;
-            
-                &:hover{
-                    background-color: $candy-purple;
-                }
-            }
+
+        .login, .user-profile{
+            margin-left: auto;
         }
+        
+        .signup{
+            padding: 10px;
+            border-radius: 5px;
+            background-color: $candy-pink;
+        
+            &:hover{
+                background-color: $candy-purple;
+            }
+        }    
     }    
 
     // Styles applied to the hamburger icon and the menu when the associated checkbox is checked.

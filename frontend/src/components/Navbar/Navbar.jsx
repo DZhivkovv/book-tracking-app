@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import NavLinks from '../NavLinks/NavLinks';
 
 import '../../assets/styles/Navbar.scss';
@@ -15,21 +14,8 @@ export default function Navbar(props) {
 
       {/*Navigation menu */}
       <ul className="menu">    
-        {/*Left section of navigation */}
-        <div className="navbar-section navbar-left">
           {/* Generates navigation links using the props passed to Navbar component. */}
           <NavLinks paths={props.paths} />
-        </div>
-
-        {/*Right section of navigation */}
-        <div className="navbar-section navbar-right">
-          <li key="Log in" className='login-link-container'>
-            <Link to="/login">Log in</Link>
-          </li>
-          <li key="Sign up" className='signup-link-container'>
-            <Link to="/signup">Sign up</Link>
-          </li>
-        </div>
       </ul>
     </div>
   );

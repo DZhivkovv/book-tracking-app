@@ -6,9 +6,19 @@ export default function NavLinks({ paths }) {
   return (
     <>
       {paths.map((path) => (
-        <li key={path}>
-          {/* Creates a link based on the value of each "path" in the array of paths. If a path has a value of 'Home', the link will redirect to the homepage */}
-            <Link to={path === 'Home' ? '/' : `/${path.toLowerCase()}`}>
+        <li 
+          key={path} 
+          className={path.startsWith("Welcome,") ? "nav-element user-profile" : `nav-element ${path.toLowerCase().replace(/\s/g, "")}`}
+        >
+          {/* Creates a link based on the value of each "path" in the array of paths. 
+          If a path has a value of 'Home', the link will redirect to the homepage. 
+          Also, if the path starts with "Welcome," as in "Welcome, user", the link will redirect to the profile page. */}
+            <Link to=
+            {
+              path === 'Home' ? '/' : 
+              path.startsWith("Welcome,") ? "profile":
+              `/${path.toLowerCase().replace(/\s/g, "")}`
+            }>
             {path}
           </Link>
         </li>
