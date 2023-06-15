@@ -10,7 +10,14 @@ import { dbConnect } from './core/db.js';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+    methods: ['OPTIONS', 'GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Depth', 'User-Agent', 'X-File-Size', 'X-Requested-With', 'If-Modified-Since', 'X-File-Name', 'Cache-Control', 'x-access-token'],
+}
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/auth',authRouter); // Use the authentication routes defined in auth.routes.js
 
