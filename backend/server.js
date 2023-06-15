@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import authRouter from './routes/auth.routes.js';
+import bookRouter from './routes/book.routes.js'
 import { checkEnvVariable } from './utils/utils.js';
 import { dbConnect } from './core/db.js';
 
@@ -20,6 +21,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/auth',authRouter); // Use the authentication routes defined in auth.routes.js
+app.use('/books',bookRouter); // Use the routes for adding and removing books defined in book.routes.js
 
 const port = process.env.PORT;// Get the port variable from the .env file
 checkEnvVariable('PORT');// Check if a port variable exists in the .env file   
