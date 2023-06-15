@@ -1,9 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthentication } from "../../hooks/useAuthentication";
 import Navbar from "../../components/Navbar/Navbar";
 import Form from "../../components/Form/Form";
 import Footer from '../../components/Footer/Footer'
 
 export default function Signup() {
+  const navigate = useNavigate();
+  //Checks if the user is logged in already
+  const {isLoggedIn} = useAuthentication();
+
+  // Redirect if the user is already logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/');
+    }
+  }, [isLoggedIn, navigate]);
+
+
   // Stores the form input values
   const [userCredentials, setUserCredentials] = useState({ 
     email: "", 
