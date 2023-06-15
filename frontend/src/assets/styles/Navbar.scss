@@ -91,6 +91,21 @@
                 background-color: $candy-purple;
             }
         }    
+
+        .logout{
+            button{
+                background-color: $candy-pink;
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
+                &:hover{
+                    background-color: $candy-purple;
+                }
+            }
+        }
     }    
 
     // Styles applied to the hamburger icon and the menu when the associated checkbox is checked.
