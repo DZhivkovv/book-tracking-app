@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function InputField({ value, label, name, placeholder, type, minLength, onChange, required }){
+export default function InputField({ value, label, name, placeholder, type, minLength, onChange, required,min }){
     //This component represents a form input field.
     return(
         <div className="form-group">
@@ -14,6 +14,7 @@ export default function InputField({ value, label, name, placeholder, type, minL
             onChange={onChange}
             required={required}
             minLength={minLength || null}
+            min={min}
             />
         </div>
     );
