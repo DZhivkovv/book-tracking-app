@@ -39,7 +39,8 @@ export default function Login() {
       .then(response => response.json())
       .then(data => {
         if (data.status === 200) {
-          // Redirects to home page on successful login
+          // Stores the token and redirects to home page on successful login
+          localStorage.setItem('token', data.token); // Stores the token in the local storage
           navigate('/');
         } else if (data.status === 400) {
           // Displays an error message on failed login attempt
