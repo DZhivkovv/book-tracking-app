@@ -1,5 +1,6 @@
 import User from '../models/user.model.js'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 export const signup = async (request, response) => {
     const { email, username, password } = request.body;
@@ -47,8 +48,75 @@ export const signup = async (request, response) => {
             } else {
                 // For any other errors, send a 500 (Internal Server Error) response
                 response.status(500).json({ error: "Internal server error" });
-                console.error(error)
             }
         }
     }
 }
+
+export const login = async (request, response) => {
+    const { email, password } = request.body;
+
+    await User.findOne({ email: email })
+        .then(async (dbUser) => {
+            if (!dbUser) {
+                // Returns error response if user is not found in the database 
+                return response.json({
+                    status: 400,
+                    message: "Invalid username or password"
+                });
+            }
+    
+            // Compares the provided password with the hashed password stored in the database
+            const isCorrect = await bcrypt.compare(password, dbUser.password);
+    
+            if (isCorrect) {
+                const payload = {
+                    id: dbUser._id,
+                    username: dbUser.username
+                };
+    
+                try {
+                    // Generates a new JWT token
+                    const token = await new Promise((resolve, reject) => {
+                        jwt.sign(
+                            payload,
+                            process.env.JWT_SECRET,
+                            { expiresIn: 86400 },
+                            (error, token) => {
+                                if (error) reject(error);
+                                resolve(token);
+                            }
+                        );
+                    });
+    
+                    // Sets the token as an HTTP-only cookie
+                    response.cookie('token', token, {
+                        httpOnly: true,
+                        sameSite: 'strict', 
+                        maxAge: 86400 * 1000, //Sets an expiration time for the cookie
+                    });
+    
+                    return response.json({
+                        status: 200,
+                        isLoggedIn: true,
+                        message: "Success",
+                        token: token
+                    });
+                } catch (error) {
+                    if (error.name === "TokenExpiredError") {
+                        // Handles the case when the token has expired
+                        return response.status(401).json({ message: "Token has expired" });
+                    } else {
+                        // Handles other errors related to token generation
+                        return response.status(400).json({ message: error.message });
+                    }
+                }
+            } else {
+                // Returns error response if the provided password is incorrect
+                return response.status(400).json({
+                    status: 400,
+                    message: "Invalid username or password"
+                });
+            }
+        });
+    }
