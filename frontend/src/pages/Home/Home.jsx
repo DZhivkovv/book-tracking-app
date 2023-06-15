@@ -1,15 +1,37 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Navbar from '../../components/Navbar/Navbar.jsx'
 import Footer from '../../components/Footer/Footer.jsx'
 import homepageImage from '../../assets/images/homepage-image.png'
 import '../../assets/styles/Home.scss'
 
 export default function Home(){
+    const[userData, setUserData] = useState(undefined);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        fetch('http://localhost:4000/auth/isUserLoggedIn',{
+            headers: {
+                'x-access-token':localStorage.getItem('token')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.status === 200){
+                setIsLoggedIn(data.isLoggedIn);
+                setUserData(data.username);
+            }
+        })
+    },[])      
+
     return(
         <div className='homepage-container'>
-            <Navbar
-                paths={['Library','Attributions']} //Each element in this prop represents a link in the navbar for this particular page. 
-            />        
+            {/* Renders the Navbar component based on the user's authentication status */}
+           {isLoggedIn ? 
+            <Navbar  paths={['Library','Attributions',`Welcome, ${userData}`,'Logout']}/> 
+            : 
+            <Navbar  paths={['Library','Attributions', 'Log in', 'Sign Up']}/>
+           }
+                    
             <main>
                 <div className="homepage-text-container">
                     <h1 className="home-heading">Bookshelf</h1>
