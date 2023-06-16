@@ -39,3 +39,20 @@ export const addBook = async (request, response) => {
     response.status(500).json({status:500, error: 'Internal server error' });
   }
 };
+
+//Gets all the books added by a user from the database using his ID.
+export const getUserBooks = async (request, response) => {
+  try{
+    const id = request.params.userID; //Extracts the userID from the request parameters.
+    const userBooks = await Book.find({ postedBy: id }); //Query to the database using the extracted id.
+  
+    response.send({
+      status: 200,
+      userBooks,
+    });
+    
+  } catch (error) {
+    // Handle any errors that occur during execution
+    response.status(500).json({ error: 'Internal server error' });
+  }
+}
