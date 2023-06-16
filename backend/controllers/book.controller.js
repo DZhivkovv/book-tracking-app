@@ -56,3 +56,21 @@ export const getUserBooks = async (request, response) => {
     response.status(500).json({ error: 'Internal server error' });
   }
 }
+
+export const removeBook = async (request, response) => {
+  const {bookID} = request.body; // Extracts the bookID from the request parameters.
+
+  try {
+    // Find the book by its id and remove it from the database
+    const result = await Book.findByIdAndDelete(bookID);
+
+    if (result) {
+      response.status(200).json({ message: 'Book removed successfully' });
+    } else {
+      response.status(404).json({ error: 'Book not found' });
+    }
+  } catch (error) {
+    response.status(500).json({ error: 'Internal server error' });
+  }
+
+}
