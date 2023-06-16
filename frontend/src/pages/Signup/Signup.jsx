@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import {  Link, useNavigate } from "react-router-dom";
 import { useAuthentication } from "../../hooks/useAuthentication";
 import Navbar from "../../components/Navbar/Navbar";
 import Form from "../../components/Form/Form";
@@ -129,6 +129,8 @@ export default function Signup() {
           onSubmit = {handleSubmit}                
         >Sign up</Form>
       </div>
+      <p>Already have an account? <Link to='/login'>Log in.</Link></p>
+
       <Footer/>
     </div>
   );

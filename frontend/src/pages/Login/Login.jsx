@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {useAuthentication} from '../../hooks/useAuthentication';
 import Navbar from "../../components/Navbar/Navbar";
 import Form from "../../components/Form/Form";
@@ -97,6 +97,7 @@ export default function Login() {
           Log in
         </Form>
       </div>
+      <p>Don't have an account? <Link to='/signup'>Create an account.</Link></p>
       <Footer />
     </div>
   );
