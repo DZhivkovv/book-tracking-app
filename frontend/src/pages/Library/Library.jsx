@@ -43,7 +43,7 @@ export default function Library() {
             {isLoggedIn ? 
             <Navbar  paths={['Home','Attributions',`Welcome, ${userData.username}`,'Logout']}/> 
             : 
-            <Navbar  paths={['Library','Attributions', 'Log in', 'Sign Up']}/>
+            <Navbar  paths={['Home','Attributions', 'Log in', 'Sign Up']}/>
            }
            <div className="library">
                 {booksArray.length > 0 ? booksArray : <p>No books yet...</p>}
