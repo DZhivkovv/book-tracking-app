@@ -1,0 +1,61 @@
+@import 'variables';
+
+.book-container{
+    width: 150px;
+    height: 250px;
+    justify-content: center;
+    background-image: url('../images/book-component-cover.jpg');
+    border-radius: 10px;
+    color: white;
+    position: relative;
+
+    .book-text{
+        width: 80%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-evenly;
+    }
+
+    .book-title{
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .book-author{
+        font-style: italic;
+        font-size: 15px;
+    }
+
+    .book-status{
+        font-size: 10px;
+    }
+
+    p{
+        margin-top: 20px;
+    }
+
+    .remove-book{
+        position: absolute;
+        bottom: 5px;
+        right: 0px;
+        width: 35px;
+        text-align: center;
+        height: 35px;
+        border-radius: 20px;
+        padding: 10px;
+        border: none;
+
+        background-color: transparent;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover{
+            color: red;
+        }
+    }
+}
