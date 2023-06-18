@@ -4,7 +4,7 @@ import { useAuthentication } from "../../hooks/useAuthentication";
 import Navbar from "../../components/Navbar/Navbar";
 import Form from "../../components/Form/Form";
 import Footer from '../../components/Footer/Footer'
-import { Oval } from "react-loader-spinner";
+import Loader from "../../components/Loader/Loader";
 
 import '../../assets/styles/signUp.scss'
 
@@ -133,23 +133,9 @@ export default function Signup() {
         
         {/*Displays an error if there is one.*/}
         {userCredentials.error && <p className="error-message">{userCredentials.error}</p>}
-        {isLoading === true &&
-        <Oval
-        height={100}
-        width={100}
-        radius={9}
-        color="brown"
-        ariaLabel="oval-loading"
-        wrapperStyle={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 9999,
-            borderRadius: "15px"
-        }}
-        wrapperClassName="loader"
-    />}
+        {/* Displays loader while the user information is being saved in the database */}
+        <Loader isLoading={isLoading} />
+        
         {/*Signup form*/}
         <Form 
             template={formTemplate}

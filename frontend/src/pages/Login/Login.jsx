@@ -4,7 +4,7 @@ import {useAuthentication} from '../../hooks/useAuthentication';
 import Navbar from "../../components/Navbar/Navbar";
 import Form from "../../components/Form/Form";
 import Footer from "../../components/Footer/Footer";
-import { Oval } from  'react-loader-spinner'
+import Loader from "../../components/Loader/Loader";
 
 import '../../assets/styles/login.scss'
 
@@ -94,26 +94,11 @@ export default function Login() {
 
       <main>
         <h1>Log in</h1>
-           {isLoading === true && 
-              <Oval
-              height={100}
-              width={100}
-              radius={9}
-              color="brown"
-              ariaLabel="oval-loading"
-              wrapperStyle={{
-                  position: "fixed",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  zIndex: 9999,
-                  borderRadius: "15px"
-              }}
-              wrapperClassName="loader"
-          />
-          }
+
       {/*Displays an error message if it exists */}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {/*Displays loader while the book the user is being authenticated */}
+      <Loader isLoading={isLoading} />
       {/* Signup form */}
       <Form
           template={formTemplate}

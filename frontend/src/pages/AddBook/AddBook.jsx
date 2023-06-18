@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Form from "../../components/Form/Form";
 import Footer from "../../components/Footer/Footer";
+import Loader from "../../components/Loader/Loader";
 import { useAuthentication } from '../../hooks/useAuthentication.js';
 
 import '../../assets/styles/addBook.scss'
@@ -10,7 +11,8 @@ import '../../assets/styles/addBook.scss'
 export default function AddBook() {
   const navigate = useNavigate();
   const { userData, isLoggedIn, isLoading } = useAuthentication();
-  
+  const [bookIsLoading, setBookIsLoading] = useState(false);
+
   // Redirects the user to the login page if he is not logged in  
   useEffect(()=>{ 
     if(isLoading === false && isLoggedIn === false){
@@ -40,6 +42,7 @@ export default function AddBook() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setBookIsLoading(true);
 
     // Send the book data to the server in order to be saved in the database
     fetch('http://localhost:4000/books/addBook', {
@@ -57,8 +60,10 @@ export default function AddBook() {
       .then(data => {
         // Handle the response from the server
         if(data.status === 200){
+          setBookIsLoading(false);
           navigate('/library');
         } else{
+          setBookIsLoading(false);
           setErrorMessage(data.error);
         }
       })
@@ -137,6 +142,8 @@ export default function AddBook() {
         <div className="add-book-left">
         {/*Displays an error message to the user if there is one*/}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {/*Displays loader while the book is being uploaded to the database */}
+        <Loader isLoading={isLoading} />
         <h1>Have you read anything lately?</h1>          
           {/* Render the book form */}
           <Form
