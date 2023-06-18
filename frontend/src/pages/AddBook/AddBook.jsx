@@ -137,7 +137,7 @@ export default function AddBook() {
         <div className="add-book-left">
         {/*Displays an error message to the user if there is one*/}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-          
+        <h1>Have you read anything lately?</h1>          
           {/* Render the book form */}
           <Form
             template={formTemplate}
