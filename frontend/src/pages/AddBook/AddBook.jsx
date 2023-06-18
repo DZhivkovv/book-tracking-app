@@ -5,6 +5,8 @@ import Form from "../../components/Form/Form";
 import Footer from "../../components/Footer/Footer";
 import { useAuthentication } from '../../hooks/useAuthentication.js';
 
+import '../../assets/styles/AddBook.scss'
+
 export default function AddBook() {
   const navigate = useNavigate();
   const { userData, isLoggedIn, isLoading } = useAuthentication();
@@ -131,17 +133,21 @@ export default function AddBook() {
         <Navbar paths={['Library', 'Attributions', 'Log in', 'Sign Up']} />
       }
 
-      {/*Displays an error message to the user if there is one*/}
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      
-      {/* Render the book form */}
-      <Form
-        template={formTemplate}
-        onSubmit={handleSubmit}
-      >
-        Add book
-      </Form>
-
+      <main>        
+        <div className="add-book-left">
+        {/*Displays an error message to the user if there is one*/}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+          
+          {/* Render the book form */}
+          <Form
+            template={formTemplate}
+            onSubmit={handleSubmit}
+          >
+            <p>Add a book</p>
+          </Form>
+        </div>
+        <div className="add-book-right"></div>
+      </main>
       <Footer />
     </div>
   );
