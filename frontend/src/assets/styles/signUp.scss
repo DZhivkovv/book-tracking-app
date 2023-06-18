@@ -1,0 +1,108 @@
+@import 'variables';
+
+.signup-container{
+    width: 100%;
+    height: 100%;
+    position: relative;    
+    background-image: linear-gradient(rgba(131, 122, 122, 0.599), rgba(100, 100, 100, 0.722)), url(../images/signup-background.jpg);
+    background-size: cover;
+
+    main{
+        width: 90%;
+        max-width: 450px;
+        padding: 50px 60px 70px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        border-radius: 10px;
+        background: #fff;
+
+        .password-requirement{
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+        h1{
+            margin-bottom: 60px;
+            position: relative;    
+            font-size: 30px;
+            
+            &::after{
+                width: 20%;
+                height: 4px;
+                position: absolute;
+                bottom: -12px;
+                left: 40%;
+                border-radius: 3px;
+                background: $candy-pink;
+                content: "";
+            }
+        }
+
+
+        .login-message{
+            width: 100%;
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+        }
+    }
+
+    .form-container{
+        height: 280px;
+
+        form{    
+            .form-group{
+                margin: 15px 0;
+                display: flex;
+                align-items: center;
+                background: #eaeaea;
+                border-radius: 5px;
+                padding-left: 10px;
+
+            
+                input{
+                    width: 100%;
+                    margin-left: 10px;
+                    padding: 18px 20px;
+                    border: 0;
+                    outline: 0;
+                    background: transparent;
+    
+                    &:focus{
+                        border: 2px dotted blue;
+    
+                        &:invalid{
+                            border: 2px dotted red;
+        
+                        }
+                    }
+                }
+
+                
+            }
+            button{
+                height: 40px;
+                width: 50%;
+                border: 0;
+                outline: 0;
+                position: absolute;
+                bottom: 30px;
+                left: 25%;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: background .3s;
+                background: $candy-pink;
+                p{
+                    color: #fff;
+                    font-size: 15px;
+                }
+    
+                &:hover{
+                    background-color: $candy-purple;
+                }
+            }
+        }
+    }
+}

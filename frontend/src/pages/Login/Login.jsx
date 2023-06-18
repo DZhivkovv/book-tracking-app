@@ -5,6 +5,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import Form from "../../components/Form/Form";
 import Footer from "../../components/Footer/Footer";
 
+import '../../assets/styles/login.scss'
+
 export default function Login() {
   const navigate = useNavigate();
   //Checks if the user is logged in already
@@ -85,19 +87,19 @@ export default function Login() {
   return (
     <div className="login-container">
       <Navbar paths={['Home', 'Attributions']} />
-      <h1>Login</h1>
-      {/*Displays an error message if it exists */}
-      {errorMessage && <p className="login-message">{errorMessage}</p>}
       {/* Signup form */}
-      <div className="form-container">
+      <main>
+        <h1>Log in</h1>
+      {/*Displays an error message if it exists */}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
         <Form
           template={formTemplate}
           onSubmit={handleSubmit}
         >
-          Log in
+          <p>Log in</p>
         </Form>
-      </div>
-      <p>Don't have an account? <Link to='/signup'>Create an account.</Link></p>
+        <p className="signup-message">Don't have an account? <Link to='/signup'>Create an account.</Link></p>
+      </main>
       <Footer />
     </div>
   );
