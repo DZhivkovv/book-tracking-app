@@ -5,7 +5,7 @@ import { useBooks } from "../../hooks/useBooks.js";
 import Navbar from '../../components/Navbar/Navbar.jsx'
 import Book from "../../components/Book/Book.jsx";
 
-import '../../assets/styles/Library.scss'
+import '../../assets/styles/library.scss'
 
 export default function Library() {
     const { userData, isLoggedIn } = useAuthentication();// Tracks if the user is logged in and contains data about them.

@@ -2,7 +2,7 @@ import React from "react";
 import facebookLogo from '../../assets/images/Footer/facebook-logo.png'
 import githubLogo from '../../assets/images/Footer/github-logo.png'
 import emailIcon from '../../assets/images/Footer/email-icon.png'
-import '../../assets/styles/Footer.scss'
+import '../../assets/styles/footer.scss'
 export default function Footer(){
     return(
         <footer className='footer--container'>

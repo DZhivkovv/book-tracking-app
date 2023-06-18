@@ -1,7 +1,7 @@
 import React from 'react';
 import NavLinks from './NavLinks';
 import { handleLogout } from '../../utils/handleLogout.js'
-import '../../assets/styles/Navbar.scss';
+import '../../assets/styles/navbar.scss';
 
 export default function Navbar(props) {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import '../../assets/styles/Book.scss'
+import '../../assets/styles/book.scss'
 
 export default function Book({id, title,author,status, onDelete}){
     return(
