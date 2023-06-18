@@ -4,6 +4,7 @@ import { useAuthentication } from "../../hooks/useAuthentication";
 import Navbar from "../../components/Navbar/Navbar";
 import Form from "../../components/Form/Form";
 import Footer from '../../components/Footer/Footer'
+import { Oval } from "react-loader-spinner";
 
 import '../../assets/styles/signUp.scss'
 
@@ -28,6 +29,7 @@ export default function Signup() {
     confirmPassword: "" 
   });
   const { email, username, password, confirmPassword } = userCredentials;
+  const [isLoading, setIsLoading] = useState(false);
 
   // Update the userCredentials state everytime the value in an input field changes.
   const handleChange = (event) => {
@@ -37,6 +39,7 @@ export default function Signup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     // If the password and confirm password match, sends a POST request to the server in order to save the user in the database
     if(password === confirmPassword){
@@ -58,8 +61,10 @@ export default function Signup() {
       .then(data =>       {
         if(data.status === 200){
         // Check if the signup is successful and redirects the user to login page if it is.
+          setIsLoading(false)
           navigate('/login');
         } else{
+          setIsLoading(false)
           // If there is an error, set the error message in the userCredentials state
           setUserCredentials((prevUserCredentials) => ({
             ...prevUserCredentials,
@@ -69,6 +74,7 @@ export default function Signup() {
       });
 
     } else {
+      setIsLoading(false)
       // If the passwords do not match, displays an error message to the user
       setUserCredentials((prevUserCredentials) => ({
         ...prevUserCredentials,
@@ -127,7 +133,23 @@ export default function Signup() {
         
         {/*Displays an error if there is one.*/}
         {userCredentials.error && <p className="error-message">{userCredentials.error}</p>}
-
+        {isLoading === true &&
+        <Oval
+        height={100}
+        width={100}
+        radius={9}
+        color="brown"
+        ariaLabel="oval-loading"
+        wrapperStyle={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 9999,
+            borderRadius: "15px"
+        }}
+        wrapperClassName="loader"
+    />}
         {/*Signup form*/}
         <Form 
             template={formTemplate}

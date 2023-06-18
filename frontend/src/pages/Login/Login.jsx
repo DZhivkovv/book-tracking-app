@@ -4,6 +4,7 @@ import {useAuthentication} from '../../hooks/useAuthentication';
 import Navbar from "../../components/Navbar/Navbar";
 import Form from "../../components/Form/Form";
 import Footer from "../../components/Footer/Footer";
+import { Oval } from  'react-loader-spinner'
 
 import '../../assets/styles/login.scss'
 
@@ -25,8 +26,8 @@ export default function Login() {
   });
 
   const { email, password } = userCredentials;
-
   const [errorMessage, setErrorMessage] = useState(null); //State variable that stores any error message that may occur during the login process
+  const [isLoading, setIsLoading] = useState(false)
 
   // Updates the userCredentials state everytime the value in an input field changes. 
   const handleChange = (event) => {
@@ -37,6 +38,7 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true)
 
     // Send login request to the server with the user credentials
     await fetch('http://localhost:4000/auth/login', {
@@ -50,10 +52,12 @@ export default function Login() {
       .then(response => response.json())
       .then(data => {
         if (data.status === 200) {
+          setIsLoading(false)
           // Stores the token and redirects to home page on successful login
           localStorage.setItem('token', data.token); // Stores the token in the local storage
           navigate('/');
         } else if (data.status === 400) {
+          setIsLoading(false)
           // Displays an error message on failed login attempt
           setErrorMessage(data.message);
         }
@@ -87,12 +91,31 @@ export default function Login() {
   return (
     <div className="login-container">
       <Navbar paths={['Home', 'Attributions']} />
-      {/* Signup form */}
+
       <main>
         <h1>Log in</h1>
+           {isLoading === true && 
+              <Oval
+              height={100}
+              width={100}
+              radius={9}
+              color="brown"
+              ariaLabel="oval-loading"
+              wrapperStyle={{
+                  position: "fixed",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  zIndex: 9999,
+                  borderRadius: "15px"
+              }}
+              wrapperClassName="loader"
+          />
+          }
       {/*Displays an error message if it exists */}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <Form
+      {/* Signup form */}
+      <Form
           template={formTemplate}
           onSubmit={handleSubmit}
         >
