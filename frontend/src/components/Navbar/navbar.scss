@@ -71,7 +71,6 @@
             margin: 0 10px;
             padding: 10px;
             font-size: 15px;
-
             a{
                 color: white;
                 text-decoration: none;        
@@ -84,9 +83,9 @@
         .login, .welcome-message{
             margin-left: auto;
         }
-        
+
         .signup{
-            padding: 10px;
+            padding: 5px;
             border-radius: 5px;
             background-color: $candy-pink;
         
@@ -170,8 +169,22 @@
                         font-size: 24px;
                         box-shadow: 0 1px 0 $faint-white inset;
                     }
-                }    
+                }
+                
             }
         }
     }
+
+    .login{
+        margin: 0 auto !important;
+    }
+
+    .welcome-message{
+        text-align: center !important;
+    }
+
+    .signup{
+        background-color: transparent !important;
+    }
+
 }
