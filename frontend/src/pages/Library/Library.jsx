@@ -4,7 +4,6 @@ import { useAuthentication } from '../../hooks/useAuthentication.js'
 import { useBooks } from "../../hooks/useBooks.js";
 import Navbar from '../../components/Navbar/Navbar.jsx'
 import Book from "../../components/Book/Book.jsx";
-import Footer from '../../components/Footer/Footer.jsx'
 
 import '../../assets/styles/Library.scss'
 
