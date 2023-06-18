@@ -36,7 +36,7 @@ export const signup = async (request, response) => {
             await user.save();
 
             // Send a 200 (OK) response with a success message
-            return response.status(200).json({ message: "User created successfully!" });
+            return response.status(200).json({ status:200, message: "User created successfully!" });
         } catch (error) {
             // Handle different types of errors
             if (error.name === "ValidationError") {

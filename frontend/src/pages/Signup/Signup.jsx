@@ -56,8 +56,10 @@ export default function Signup() {
       })
       .then(response => response.json())
       .then(data =>       {
-        // Check if the response status is 409 (Conflict)
-        if (data.status === 409) {
+        if(data.status === 200){
+        // Check if the signup is successful and redirects the user to login page if it is.
+          navigate('/login');
+        } else{
           // If there is an error, set the error message in the userCredentials state
           setUserCredentials((prevUserCredentials) => ({
             ...prevUserCredentials,
