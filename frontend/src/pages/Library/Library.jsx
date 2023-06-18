@@ -45,11 +45,11 @@ export default function Library() {
             : 
             <Navbar  paths={['Home','Attributions', 'Log in', 'Sign Up']}/>
            }
+            <h1>Your library</h1>
            <div className="library">
                 {booksArray.length > 0 ? booksArray : <p>No books yet...</p>}
             </div>
             <Link to='/add-book' className="link-addbook">+</Link>
-            <Footer/>
         </div>
     )
 
