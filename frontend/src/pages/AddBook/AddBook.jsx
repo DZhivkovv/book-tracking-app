@@ -45,7 +45,7 @@ export default function AddBook() {
     setBookIsLoading(true);
 
     // Send the book data to the server in order to be saved in the database
-    fetch('http://localhost:4000/books/addBook', {
+    fetch('https://bookshelf-backend-ip1h.onrender.com/books/addBook', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

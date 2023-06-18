@@ -16,7 +16,7 @@ export default function Library() {
 
     // Sends a request to remove the book with the specified ID
     const onDeleteBook = async (bookID) => {
-        await fetch('http://localhost:4000/books/removeBook', {
+        await fetch('https://bookshelf-backend-ip1h.onrender.com/books/removeBook', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

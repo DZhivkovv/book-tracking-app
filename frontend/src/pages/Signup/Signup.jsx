@@ -48,7 +48,7 @@ export default function Signup() {
         error: null
       }));
 
-      await fetch('http://localhost:4000/auth/signup',{
+      await fetch('https://bookshelf-backend-ip1h.onrender.com/auth/signup',{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

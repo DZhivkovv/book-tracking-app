@@ -41,7 +41,7 @@ export default function Login() {
     setIsLoading(true)
 
     // Send login request to the server with the user credentials
-    await fetch('http://localhost:4000/auth/login', {
+    await fetch('https://bookshelf-backend-ip1h.onrender.com/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

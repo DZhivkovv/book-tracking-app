@@ -8,7 +8,7 @@ export function useAuthentication() {
 
   useEffect(() => {
     // Makes a request to the server to check if the user is logged in
-    fetch("http://localhost:4000/auth/isUserLoggedIn", {
+    fetch("https://bookshelf-backend-ip1h.onrender.com/auth/isUserLoggedIn", {
       headers: {
         "x-access-token": localStorage.getItem("token"), // Includes the token from local storage in the request header
       },
