@@ -2,7 +2,7 @@ import React from "react"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
 
-import '../../assets/styles/attributions.scss'
+import './attributions.scss'
 
 export default function Attributions(){
     return(

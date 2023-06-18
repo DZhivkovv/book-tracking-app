@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import Loader from "../../components/Loader/Loader";
 import { useAuthentication } from '../../hooks/useAuthentication.js';
 
-import '../../assets/styles/addBook.scss'
+import './addBook.scss'
 
 export default function AddBook() {
   const navigate = useNavigate();

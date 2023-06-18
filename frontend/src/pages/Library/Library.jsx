@@ -6,7 +6,7 @@ import Navbar from '../../components/Navbar/Navbar.jsx'
 import Book from "../../components/Book/Book.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
 
-import '../../assets/styles/library.scss'
+import './library.scss'
 
 export default function Library() {
     const { userData, isLoggedIn } = useAuthentication();// Tracks if the user is logged in and contains data about them.

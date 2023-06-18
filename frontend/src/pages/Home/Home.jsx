@@ -3,7 +3,8 @@ import { useAuthentication } from '../../hooks/useAuthentication.js'
 import Navbar from '../../components/Navbar/Navbar.jsx'
 import Footer from '../../components/Footer/Footer.jsx'
 import homepageImage from '../../assets/images/homepage-image.png'
-import '../../assets/styles/home.scss'
+
+import './home.scss'
 
 export default function Home(){
     const {userData, isLoggedIn} = useAuthentication();

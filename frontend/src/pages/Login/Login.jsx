@@ -6,7 +6,7 @@ import Form from "../../components/Form/Form";
 import Footer from "../../components/Footer/Footer";
 import Loader from "../../components/Loader/Loader";
 
-import '../../assets/styles/login.scss'
+import './login.scss'
 
 export default function Login() {
   const navigate = useNavigate();
