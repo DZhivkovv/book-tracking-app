@@ -5,6 +5,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import Form from "../../components/Form/Form";
 import Footer from '../../components/Footer/Footer'
 
+import '../../assets/styles/signUp.scss'
+
 export default function Signup() {
   const navigate = useNavigate();
   //Checks if the user is logged in already
@@ -118,19 +120,24 @@ export default function Signup() {
   return (
     <div className="signup-container">
       <Navbar paths={['Home', 'Attributions']} />
-      <h1>Sign up</h1>      
-      {/*Displays an error if there is one.*/}
-      {userCredentials.error && <p className="error">{userCredentials.error}</p>}
+      <main>
+        <h1>Create an account</h1>
+        
+        {/*Displays an error if there is one.*/}
+        {userCredentials.error && <p className="error-message">{userCredentials.error}</p>}
 
-      <div className="form-container">
-      {/*Signup form*/}
+        {/*Signup form*/}
         <Form 
-          template={formTemplate}
-          onSubmit = {handleSubmit}                
-        >Sign up</Form>
-      </div>
-      <p>Already have an account? <Link to='/login'>Log in.</Link></p>
-
+            template={formTemplate}
+            onSubmit = {handleSubmit}                
+        >
+          <p>Sign up</p>
+        </Form>
+        <p className="login-message">Already have an account? <Link to='/login'>Log in.</Link></p>
+        <p className="password-requirement">
+            The password must contain at least one uppercase letter, one lowercase letter, one digit, one special character from the set @$!%*?& and be at least 8 characters long.
+        </p>
+      </main>
       <Footer/>
     </div>
   );
