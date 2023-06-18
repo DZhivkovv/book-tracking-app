@@ -8,17 +8,20 @@ export default function NavLinks({ paths, handleLogout }) {
       {paths.map((path) => (
         <li 
           key={path} 
-          className={path.startsWith("Welcome,") ? "nav-element user-profile" : `nav-element ${path.toLowerCase().replace(/\s/g, "")}`}
+          className={path.startsWith("Welcome,") ? "nav-element welcome-message" : `nav-element ${path.toLowerCase().replace(/\s/g, "")}`}
         >
           {/* Conditionally render a Link component for each path */}
           {/*If a prop 'logout' is passed, a button will be generated, not a link */}
           {path === "Logout" ? (
             <button onClick={handleLogout}>Logout</button>
-          ) : (
+          ) : 
+          path.startsWith('Welcome,') ? (
+            <p>{path}</p>
+          ) :
+          (
             <Link
               to={
                 path === 'Home' ? '/' : // If the path is 'Home', redirect to the homepage ('/')
-                path.startsWith('Welcome,') ? "profile" : // If the path starts with 'Welcome,', redirect to the profile page ('profile')
                 `/${path.toLowerCase().replace(/\s/g, "")}` // For other paths, convert to lowercase and remove whitespace from the path to create the appropriate URL
               }
             >
