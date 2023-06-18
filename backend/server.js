@@ -12,7 +12,7 @@ dotenv.config();
 
 const app = express();
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://bookshelf-4fod.onrender.com',
     credentials: true,
     methods: ['OPTIONS', 'GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Depth', 'User-Agent', 'X-File-Size', 'X-Requested-With', 'If-Modified-Since', 'X-File-Name', 'Cache-Control', 'x-access-token'],
