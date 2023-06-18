@@ -151,6 +151,7 @@
             top: 0;
             right: -300px;
             background: $wood-dark-brown;
+            z-index: 1;
         
             /*Common styles for the left positioned links and the right positioned links in the navbar*/
             .navbar-section{
@@ -160,21 +161,13 @@
 
                 li{
                     width: 100%;
-    
+
                     a, a:hover{
                         padding: 30px;
                         font-size: 24px;
                         box-shadow: 0 1px 0 $faint-white inset;
-                            
                     }
                 }    
-            }
-
-            .navbar-right{
-                .signup-link-container{
-                    padding: 0;
-                    background-color: transparent;
-                }
             }
         }
     }
