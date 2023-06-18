@@ -62,7 +62,7 @@ export const login = async (request, response) => {
                 // Returns error response if user is not found in the database 
                 return response.json({
                     status: 400,
-                    message: "Invalid username or password"
+                    message: "Invalid email or password"
                 });
             }
     
@@ -107,7 +107,7 @@ export const login = async (request, response) => {
                 // Returns error response if the provided password is incorrect
                 return response.status(400).json({
                     status: 400,
-                    message: "Invalid username or password"
+                    message: "Invalid email or password"
                 });
             }
         });
